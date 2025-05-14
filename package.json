@@ -1,21 +1,33 @@
 {
   "name": "baia",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "lint": "expo lint"
   },
   "dependencies": {
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
     "expo": "~53.0.9",
     "expo-status-bar": "~2.2.3",
+    "prettier": "^3.5.3",
     "react": "19.0.0",
-    "react-native": "0.79.2"
+    "react-native": "0.79.2",
+    "expo-router": "~5.0.6",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.10.0",
+    "expo-linking": "~7.1.4",
+    "expo-constants": "~17.1.6",
+    "expo-splash-screen": "~0.30.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~9.2.0"
   },
   "private": true
 }
