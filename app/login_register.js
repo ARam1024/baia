@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   StyleSheet,
   SafeAreaView,
@@ -7,30 +8,49 @@ import {
   Text,
 } from "react-native";
 import { Default } from "../styles/themes/theme";
-import { Login } from "../components/Login";
-const gato = require("../assets/VectorSinLibros.png");
+import { Login } from "../components/forms/Login";
 
+import { Register } from "../components/forms/Register";
+const gato = require("../assets/VectorSinLibros.png");
 export default function Login_register() {
+  const [activeForm, setActiveForm] = useState("login");
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.imagen}>
         <View style={styles.container_rl_}>
-          <Pressable style={styles.buttom_Login}>
-            <Text>Login</Text>
+          <Pressable
+            style={[
+              styles.buttom_inactive_i,
+              activeForm === "login" && styles.buttom_active,
+            ]}
+            onPress={() => activeForm !== "login" && setActiveForm("login")}
+            disabled={activeForm === "login"}
+          >
+            <Text style={styles.texto_button}>Login</Text>
           </Pressable>
-          <Pressable style={styles.buttom_Register}>
-            <Text>Register</Text>
+          <Pressable
+            style={[
+              styles.buttom_inactive_d,
+              activeForm === "register" && styles.buttom_active,
+            ]}
+            onPress={() =>
+              activeForm !== "register" && setActiveForm("register")
+            }
+            disabled={activeForm === "register"}
+          >
+            <Text style={styles.texto_button}>Register</Text>
           </Pressable>
         </View>
         <Image source={gato} />
       </View>
-      <Login />
+      {activeForm === "login" ? <Login /> : <Register />}
     </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flex: "1",
+    padding: 20,
     alignItems: "center",
     backgroundColor: Default.colors.background,
     height: "100%",
@@ -43,22 +63,25 @@ const styles = StyleSheet.create({
   },
   container_rl_: {
     flexDirection: "row",
-    backgroundColor: Default.colors.background,
+    backgroundColor: Default.colors.senary,
     position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
     height: 50,
   },
-  buttom_Login: {
+  buttom_active: {
+    backgroundColor: Default.colors.quinary,
+  },
+  buttom_inactive_i: {
     flex: 2,
     paddingHorizontal: 16,
     alignItems: "center",
     justifyContent: "flex-end",
-    backgroundColor: Default.colors.secondary,
+    backgroundColor: Default.colors.primary,
     borderStartStartRadius: 40,
   },
-  buttom_Register: {
+  buttom_inactive_d: {
     flex: 2,
     paddingHorizontal: 16,
     alignItems: "center",
@@ -66,12 +89,8 @@ const styles = StyleSheet.create({
     backgroundColor: Default.colors.primary,
     borderEndStartRadius: 40,
   },
-  l_r: {
-    flex: "1",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: Default.colors.secondary,
-    width: "100%",
-    height: "100%",
+  texto_button: {
+    fontSize: 22,
+    color: Default.colors.septenary,
   },
 });
