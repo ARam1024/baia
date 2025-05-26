@@ -11,24 +11,28 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#fd769f"
+      "backgroundColor": "#ffdd94"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#fd769f"
+        "foregroundImage": "./assets/adaptive-icon.png"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.anonymous.baia"
+      "package": "com.anonymous.baia",
+      "softwareKeyboardLayoutMode": "pan"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      ["expo-splash-screen",{
+        "backgroundColor": "#ffdd94",
+        "image": "./assets/splash-icon.png"
+        }]
     ]
   }
 }

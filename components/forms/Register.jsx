@@ -5,21 +5,36 @@ import {
   SafeAreaView,
   Pressable,
   Text,
-  Button
+  Button,
 } from "react-native";
 
-import { Default } from "../../styles/themes/theme";
+import { colors } from "../../styles/colors";
+import { sizetext } from "../../styles/sizetext";
 
 export function Register() {
   return (
     <View style={styles.container}>
-      <TextInput style={styles.Entradas_texto} placeholder="Nombre de Usuario" />
-      <TextInput style={styles.Entradas_texto} placeholder="Correo" />
-      <TextInput style={styles.Entradas_texto} placeholder="Contraseña" />
-      <TextInput style={styles.Entradas_texto} placeholder="Confirmar Contraseña" />
+      <View style={styles.Entradas}>
+        <TextInput
+          style={styles.Entradas_texto}
+          placeholder="Nombre de Usuario"
+        />
+      </View>
+      <View style={styles.Entradas}>
+        <TextInput style={styles.Entradas_texto} placeholder="Correo" />
+      </View>
+      <View style={styles.Entradas}>
+        <TextInput style={styles.Entradas_texto} placeholder="Contraseña" />
+      </View>
+      <View style={styles.Entradas}>
+        <TextInput
+          style={styles.Entradas_texto}
+          placeholder="Confirmar Contraseña"
+        />
+      </View>
       <View>
         <Pressable style={styles.button}>
-          <Text style={styles.texto_button}>Registro</Text>
+          <Text style={sizetext.text_btn}>Registro</Text>
         </Pressable>
       </View>
     </View>
@@ -30,31 +45,31 @@ const styles = StyleSheet.create({
     flex: "1",
     alignItems: "center",
     justifyContent: "space-around",
-    backgroundColor: Default.colors.quinary,
-    width: "100%",
-    height: "55%",
-    paddingHorizontal: 40,
+    backgroundColor: colors.white_50,
+    gap: 20,
+    padding: 40,
     borderEndEndRadius: 40,
     borderStartEndRadius: 40,
   },
-  Entradas_texto: {
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    backgroundColor: Default.colors.septenary,
-    borderColor: Default.colors.tertiary,
-    borderWidth: 2,
+  Entradas: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: colors.white_75,
     borderRadius: 40,
+    gap: 10,
+    paddingHorizontal: 16,
     width: "100%",
+  },
+  Entradas_texto: {
+    flex: 4,
     fontSize: 20,
+    borderLeftWidth: 2,
+    borderColor: colors.rose,
   },
   button: {
-    backgroundColor: Default.colors.primary,
+    backgroundColor: colors.yellow,
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 40,
-  },
-  texto_button: {
-    fontSize: 20,
-    color: Default.colors.septenary
   },
 });

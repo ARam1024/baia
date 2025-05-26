@@ -1,22 +1,24 @@
 import { Slot } from "expo-router";
-import { View } from "react-native";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-
-SplashScreen.preventAutoHideAsync();
-
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { gradients } from "../styles/colors";
 export default function Layout() {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      SplashScreen.hideAsync();
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <View style={{ flex: 1 }}>
-      <Slot />
-    </View>
+    <SafeAreaProvider>
+      <LinearGradient
+        colors={gradients.yellow_rose}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.container}
+      >
+        <Slot />
+      </LinearGradient>
+    </SafeAreaProvider>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
